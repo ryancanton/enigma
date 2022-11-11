@@ -31,13 +31,13 @@ RSpec.describe Enigma do
     it 'has offsets' do
       enigma = Enigma.new
 
-      expect(offset_a).to be_a(Integer)
+      expect(enigma.offset_a).to be_a(Integer)
       expect(enigma.offset_a.digits.length).to eq(1)
-      expect(offset_b).to be_a(Integer)
+      expect(enigma.offset_b).to be_a(Integer)
       expect(enigma.offset_b.digits.length).to eq(1)
-      expect(offset_c).to be_a(Integer)
+      expect(enigma.offset_c).to be_a(Integer)
       expect(enigma.offset_c.digits.length).to eq(1)
-      expect(offset_d).to be_a(Integer)
+      expect(enigma.offset_d).to be_a(Integer)
       expect(enigma.offset_d.digits.length).to eq(1)
     end
   end

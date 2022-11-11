@@ -24,8 +24,18 @@ class Enigma
     @key_d = keys[3..4].to_i
   end
 
-  def make_offsets
+  def date_to_offsets
+    time = Time.now
+    date_num = [time.day, time.month, time.year].join.to_i**2
+    offsets = date_num.to_s[-4..-1].to_i.digits
+  end
 
+  def make_offsets
+    offsets = date_to_offsets
+    @offset_a = offsets[0]
+    @offset_b = offsets[1]
+    @offset_c = offsets[2]
+    @offset_d = offsets[3]
   end
 
 
