@@ -13,11 +13,11 @@ class Enigma
   end
 
   def make_keys
-    keys = 5.times.map{rand(10)}.join.to_i.digits
-    @key_a = keys[0]
-    @key_b = keys[1]
-    @key_c = keys[2]
-    @key_d = keys[3]
+    keys = 5.times.map{rand(10)}.join
+    @key_a = keys[0..1].to_i
+    @key_b = keys[1..2].to_i
+    @key_c = keys[2..3].to_i
+    @key_d = keys[3..4].to_i
   end
 
   def make_offsets

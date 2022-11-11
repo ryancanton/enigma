@@ -19,13 +19,13 @@ RSpec.describe Enigma do
       enigma = Enigma.new
 
       expect(enigma.key_a).to be_a(Integer)
-      expect(enigma.key_a.digits.length).to eq(1)
+      expect(enigma.key_a.digits.length).to be <(3)
       expect(enigma.key_b).to be_a(Integer)
-      expect(enigma.key_b.digits.length).to eq(1)
+      expect(enigma.key_b.digits.length).to be <(3)
       expect(enigma.key_c).to be_a(Integer)
-      expect(enigma.key_c.digits.length).to eq(1)
+      expect(enigma.key_c.digits.length).to be <(3)
       expect(enigma.key_d).to be_a(Integer)
-      expect(enigma.key_d.digits.length).to eq(1)
+      expect(enigma.key_d.digits.length).to be <(3)
     end
   end
 end
