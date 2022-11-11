@@ -4,7 +4,11 @@ class Enigma
               :key_a,
               :key_b,
               :key_c,
-              :key_d
+              :key_d,
+              :offset_a,
+              :offset_b,
+              :offset_c,
+              :offset_d
 
   def initialize
     @alphabet = ("a".."z").to_a << " "
