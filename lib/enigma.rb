@@ -22,7 +22,7 @@ class Enigma
     }
   end
 
-  def date_to_offsets
+  def date_to_offsets(date_num = nil)
     time = Time.now
     date_num = [time.day, time.month, time.year.to_s[-2..-1].to_i].join.to_i**2
     offsets = date_num.to_s[-4..-1].to_i.digits

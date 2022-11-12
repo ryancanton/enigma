@@ -72,7 +72,7 @@ RSpec.describe Enigma do
       enigma = enigma.new
 
       enigma.encrypt("hello world", "02715", "040895").to eq({
-                                                               decryption: "keder ohulw",
+                                                               encryption: "keder ohulw",
                                                                key: "02715",
                                                                date: "040895"
                                                              })
@@ -88,6 +88,18 @@ RSpec.describe Enigma do
                                                                key: "02715",
                                                                date: "040895"
                                                              })
+    end
+  end
+
+  describe '#encrypt and #decrypt' do
+    it 'successfully encrypts and decrypts messages when give no keys or dates' do
+      enigma = enigma.new
+      original_message = "hello world"
+      encrypted_message = enigma.encrypt(original_message)[:encryption]
+      decrypted_message = enigma.decrypt(encrypted_message)[:decryption]
+
+      expect(decrypted_message).to eq(original_message)
+      expect(encrypted_message.length).to eq(original_message.length)
     end
   end
 end
