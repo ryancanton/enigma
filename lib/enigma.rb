@@ -46,4 +46,15 @@ class Enigma
       D: offsets[:D] + keys[:D]
     }
   end
+
+  def shift(_char, _shift_val)
+    char = _char.downcase
+    shift_val = _shift_val % @alphabet.length
+    if !@alphabet.any?(char)
+      return char
+    else
+      org_alphabet = @alphabet.rotate(@alphabet.index(char))
+      return org_alphabet[shift_val]
+    end
+  end
 end
