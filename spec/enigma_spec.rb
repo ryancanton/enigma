@@ -18,27 +18,27 @@ RSpec.describe Enigma do
     it 'has keys' do
       enigma = Enigma.new
 
-      expect(enigma.key_a).to be_a(Integer)
-      expect(enigma.key_a.digits.length).to be <(3)
-      expect(enigma.key_b).to be_a(Integer)
-      expect(enigma.key_b.digits.length).to be <(3)
-      expect(enigma.key_c).to be_a(Integer)
-      expect(enigma.key_c.digits.length).to be <(3)
-      expect(enigma.key_d).to be_a(Integer)
-      expect(enigma.key_d.digits.length).to be <(3)
+      expect(enigma.keys[:A]).to be_a(Integer)
+      expect(enigma.keys[:A].digits.length).to be <(3)
+      expect(enigma.keys[:B]).to be_a(Integer)
+      expect(enigma.keys[:B].digits.length).to be <(3)
+      expect(enigma.keys[:C]).to be_a(Integer)
+      expect(enigma.keys[:C].digits.length).to be <(3)
+      expect(enigma.keys[:D]).to be_a(Integer)
+      expect(enigma.keys[:D].digits.length).to be <(3)
     end
 
     it 'has offsets' do
       enigma = Enigma.new
 
-      expect(enigma.offset_a).to be_a(Integer)
-      expect(enigma.offset_a.digits.length).to eq(1)
-      expect(enigma.offset_b).to be_a(Integer)
-      expect(enigma.offset_b.digits.length).to eq(1)
-      expect(enigma.offset_c).to be_a(Integer)
-      expect(enigma.offset_c.digits.length).to eq(1)
-      expect(enigma.offset_d).to be_a(Integer)
-      expect(enigma.offset_d.digits.length).to eq(1)
+      expect(enigma.offsets[:A]).to be_a(Integer)
+      expect(enigma.offsets[:A].digits.length).to eq(1)
+      expect(enigma.offsets[:B]).to be_a(Integer)
+      expect(enigma.offsets[:B].digits.length).to eq(1)
+      expect(enigma.offsets[:C]).to be_a(Integer)
+      expect(enigma.offsets[:C].digits.length).to eq(1)
+      expect(enigma.offsets[:D]).to be_a(Integer)
+      expect(enigma.offsets[:D].digits.length).to eq(1)
     end
   end
 end
