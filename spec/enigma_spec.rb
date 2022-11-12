@@ -45,9 +45,13 @@ RSpec.describe Enigma do
       enigma = Enigma.new
 
       expect(enigma.shifts[:A]).to be_a(Integer)
+      expect(enigma.shifts[:A]).to eq(enigma.offsets[:A] + enigma.keys[:A])
       expect(enigma.shifts[:B]).to be_a(Integer)
+      expect(enigma.shifts[:B]).to eq(enigma.offsets[:B] + enigma.keys[:B])
       expect(enigma.shifts[:C]).to be_a(Integer)
+      expect(enigma.shifts[:C]).to eq(enigma.offsets[:C] + enigma.keys[:C])
       expect(enigma.shifts[:D]).to be_a(Integer)
+      expect(enigma.shifts[:D]).to eq(enigma.offsets[:D] + enigma.keys[:D])
     end
   end
 end
