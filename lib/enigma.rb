@@ -12,7 +12,7 @@ class Enigma
     make_shifts
   end
 
-  def make_keys
+  def make_keys(key_array = nil)
     key_array = 5.times.map{rand(10)}.join
     @keys = {
       A: key_array[0..1].to_i,
