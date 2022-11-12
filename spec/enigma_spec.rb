@@ -1,7 +1,7 @@
 require './lib/enigma'
 
 RSpec.describe Enigma do
-  describe '#initialize and methods called inside of initialize' do
+  describe '#initialize and helper methods called inside of initialize' do
     it 'exists' do
       enigma = Enigma.new
 
@@ -52,6 +52,18 @@ RSpec.describe Enigma do
       expect(enigma.shifts[:C]).to eq(enigma.offsets[:C] + enigma.keys[:C])
       expect(enigma.shifts[:D]).to be_a(Integer)
       expect(enigma.shifts[:D]).to eq(enigma.offsets[:D] + enigma.keys[:D])
+    end
+  end
+
+  describe '#shift' do
+    it 'correctly shifts a character in an alphabet by a given value' do
+      enigma = Enigma.new
+
+      expect(enigma.shift('a', 0)).to eq('a')
+      expect(enigma.shift('a', 27)).to eq('a')
+      expect(enigma.shift('!', 34)).to eq('!')
+      expect(enigma.shift('L', 73)).to eq('d')
+      expect(enigma.shift(' ', 4)).to eq('d')
     end
   end
 end
