@@ -55,20 +55,6 @@ RSpec.describe Enigma do
     end
   end
 
-  describe '#shift' do
-    it 'correctly shifts a character in an alphabet by a given value' do
-      enigma = Enigma.new
-
-      expect(enigma.shift('a', 0)).to eq('a')
-      expect(enigma.shift('a', 27)).to eq('a')
-      expect(enigma.shift('!', 34)).to eq('!')
-      expect(enigma.shift('L', 73)).to eq('d')
-      expect(enigma.shift(' ', 4)).to eq('d')
-      expect(enigma.shift('d', -73)).to eq('l')
-      expect(enigma.shift('K', -4)).to eq('g')
-    end
-  end
-
   describe '#make_keys' do
     it 'can take an argument to set the keys manually' do
       enigma = Enigma.new
@@ -93,12 +79,37 @@ RSpec.describe Enigma do
     end
   end
 
+  describe '#shift' do
+    it 'correctly shifts a character in an alphabet by a given value' do
+      enigma = Enigma.new
+
+      expect(enigma.shift('a', 0)).to eq('a')
+      expect(enigma.shift('a', 27)).to eq('a')
+      expect(enigma.shift('!', 34)).to eq('!')
+      expect(enigma.shift('L', 73)).to eq('d')
+      expect(enigma.shift(' ', 4)).to eq('d')
+      expect(enigma.shift('d', -73)).to eq('l')
+      expect(enigma.shift('K', -4)).to eq('g')
+    end
+  end
+
+  describe 'shift_message' do
+    it 'returns a shifted string based on key and offset values' do
+      enigma = Enigma.new
+      enigma.make_keys("02715")
+      enigma.make_offsets("040895")
+      enigma.make_shifts
+
+      expect(enigma.shift_message("Hello world!".split(""), 1)).to eq("keder ohulw!")
+    end
+  end
+
   describe '#encrypt' do
     it 'returns an encrypted message with a given key and date' do
       enigma = Enigma.new
 
-      expect(enigma.encrypt("hello world", "02715", "040895")).to eq({
-                                                               encryption: "keder ohulw",
+      expect(enigma.encrypt("Hello World!", "02715", "040895")).to eq({
+                                                               encryption: "keder ohulw!",
                                                                key: "02715",
                                                                date: "040895"
                                                              })
@@ -109,8 +120,8 @@ RSpec.describe Enigma do
     it 'returns a decoded message with a given key and date' do
       enigma = Enigma.new
 
-      expect(enigma.decrypt("keder ohulw", "02715", "040895")).to eq({
-                                                               decryption: "hello world",
+      expect(enigma.decrypt("keder ohulw!", "02715", "040895")).to eq({
+                                                               decryption: "hello world!",
                                                                key: "02715",
                                                                date: "040895"
                                                              })
