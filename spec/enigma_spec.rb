@@ -67,9 +67,33 @@ RSpec.describe Enigma do
     end
   end
 
+  describe '#make_keys' do
+    it 'can take an argument to set the keys manually' do
+      enigma = Enigma.new
+      enigma.make_keys("12345")
+
+      expect(enigma.keys[:A]).to eq(12)
+      expect(enigma.keys[:B]).to eq(23)
+      expect(enigma.keys[:C]).to eq(34)
+      expect(enigma.keys[:D]).to eq(45)
+    end
+  end
+
+  describe '#make_offsets' do
+    it 'can take an argument to set the offsets manually' do
+      enigma = Enigma.new
+      enigma.make_offsets("170624")
+
+      expect(enigma.offsets[:A]).to eq(9)
+      expect(enigma.offsets[:B]).to eq(3)
+      expect(enigma.offsets[:C]).to eq(7)
+      expect(enigma.offsets[:D]).to eq(6)
+    end
+  end
+
   describe '#encrypt' do
     it 'returns an encrypted message with a given key and date' do
-      enigma = enigma.new
+      enigma = Enigma.new
 
       enigma.encrypt("hello world", "02715", "040895").to eq({
                                                                encryption: "keder ohulw",
@@ -81,7 +105,7 @@ RSpec.describe Enigma do
 
   describe '#decrypt' do
     it 'returns a decoded message with a given key and date' do
-      enigma = enigma.new
+      enigma = Enigma.new
 
       enigma.decrypt("keder ohulw", "02715", "040895").to eq({
                                                                decryption: "hello world",
@@ -93,7 +117,7 @@ RSpec.describe Enigma do
 
   describe '#encrypt and #decrypt' do
     it 'successfully encrypts and decrypts messages when give no keys or dates' do
-      enigma = enigma.new
+      enigma = Enigma.new
       original_message = "hello world"
       encrypted_message = enigma.encrypt(original_message)[:encryption]
       decrypted_message = enigma.decrypt(encrypted_message)[:decryption]
