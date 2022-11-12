@@ -3,7 +3,7 @@ class Enigma
   attr_reader :alphabet,
               :keys,
               :offsets,
-              :offsets
+              :shifts
 
   def initialize
     @alphabet = ("a".."z").to_a << " "
