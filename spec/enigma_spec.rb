@@ -138,5 +138,15 @@ RSpec.describe Enigma do
       expect(decrypted_message).to eq(original_message)
       expect(encrypted_message.length).to eq(original_message.length)
     end
+
+    it 'successfully encrypts and decrypts messages when given only a key' do
+      enigma = Enigma.new
+      original_message = "hello world"
+      encrypted_message = enigma.encrypt(original_message, "12345")[:encryption]
+      decrypted_message = enigma.decrypt(encrypted_message, "12345")[:decryption]
+
+      expect(decrypted_message).to eq(original_message)
+      expect(encrypted_message.length).to eq(original_message.length)
+    end
   end
 end

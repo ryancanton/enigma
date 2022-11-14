@@ -67,7 +67,7 @@ class Enigma
   end
 
   def reassign_key_and_offsets(key, date)
-    if (key != nil && date != nil)
+    if (key != nil)
       make_keys(key)
       make_offsets(date)
       make_shifts
@@ -116,5 +116,4 @@ class Enigma
       date:       @offsets[:date]
     }
   end
-
 end
