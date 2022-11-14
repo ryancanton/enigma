@@ -1,8 +1,7 @@
-gem 'simplecov', require: false, group: :test
+gem 'simplecov', require: false
 
 source 'https://rubygems.org'
 
-source 'https://rubygems.org'
 gem 'cane'
 gem 'reek'
 gem 'rake'
