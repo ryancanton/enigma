@@ -80,6 +80,26 @@ RSpec.describe Enigma do
     end
   end
 
+  describe '#reassign_key_and_offsets' do
+    it 'reassigns key, offset, and shift values baased on given input' do
+      enigma = Enigma.new
+      enigma.reassign_key_and_offsets("12345", "170624")
+
+      expect(enigma.offsets[:A]).to eq(9)
+      expect(enigma.offsets[:B]).to eq(3)
+      expect(enigma.offsets[:C]).to eq(7)
+      expect(enigma.offsets[:D]).to eq(6)
+      expect(enigma.keys[:A]).to eq(12)
+      expect(enigma.keys[:B]).to eq(23)
+      expect(enigma.keys[:C]).to eq(34)
+      expect(enigma.keys[:D]).to eq(45)
+      expect(enigma.shifts[:A]).to eq(enigma.offsets[:A] + enigma.keys[:A])
+      expect(enigma.shifts[:B]).to eq(enigma.offsets[:B] + enigma.keys[:B])
+      expect(enigma.shifts[:C]).to eq(enigma.offsets[:C] + enigma.keys[:C])
+      expect(enigma.shifts[:D]).to eq(enigma.offsets[:D] + enigma.keys[:D])
+    end
+  end
+
   describe '#shift' do
     it 'correctly shifts a character in an alphabet by a given value' do
       enigma = Enigma.new
